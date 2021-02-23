@@ -71,7 +71,7 @@ func mount_upload(buf *C.void, size C.size_t, userdata *C.void) C.ssize_t {
 	if err != nil {
 		return C.ssize_t(0)
 	}
-	bufsplice := (*[1 << 30]byte)(unsafe.Pointer(buf))[0:int(size):int(size)]
+	bufsplice := (*[1 << 29]byte)(unsafe.Pointer(buf))[0:int(size):int(size)]
 	copy(bufsplice, rbuf)
 	return C.ssize_t(ret)
 }
